@@ -5,6 +5,7 @@
     box-sizing: border-box;
 }
 
+
 h1 {
     text-align: center;
     color: goldenrod;
@@ -43,4 +44,11 @@ button {
 
 button span {
     display: none;
+}
+
+@media screen and (max-width: 600px) {
+    button {
+        height: 200px;
+        width: 175px;
+    }
 }
