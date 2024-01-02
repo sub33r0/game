@@ -1,0 +1,46 @@
+* {
+    background-color: blue;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    color: goldenrod;
+}
+
+#game-container {
+    text-align: center;
+    size-adjust: 100%;
+}
+
+#result-container {
+    text-align: center;
+}
+
+button {
+    height: 400px;
+    width: 350px;
+    border: none;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: contain;
+    box-sizing: border-box;
+}
+
+#buttonOne {
+    background-image: url(./img/rock.png);
+}
+
+#buttonTwo {
+    background-image: url(./img/papper.png);
+}
+
+#buttonThree {
+    background-image: url(./img/scissor.png);
+}
+
+button span {
+    display: none;
+}
