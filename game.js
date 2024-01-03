@@ -1,10 +1,27 @@
 let winCount = 0;
 let loseCount = 0;
 
+let winSound;
+let loseSound;
+
+document.addEventListener('DOMContentLoaded', function () {
+    winSound = document.getElementById('winSound');
+    loseSound = document.getElementById('loseSound');
+
+    
+    checkForWinner();
+});
+
 function getComputerChoice() {
     const choices = ['rock', 'paper', 'scissors'];
     const randomIndex = Math.floor(Math.random() * 3);
-    return choices[randomIndex];
+    const computerSelection = choices[randomIndex];
+
+
+    const computerSelectionImg = document.getElementById('computer-selection-img');
+    computerSelectionImg.src = `./img/${computerSelection}.png`;
+
+    return computerSelection;
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -30,13 +47,21 @@ function updateResult(result) {
 
 function checkForWinner() {
     if (winCount === 5) {
-        
-        alert('Congratulations! You won the game!');
         resetGame();
+        Swal.fire({
+            title: 'Congratulations!',
+            text: 'You won the game!',
+            icon: 'success',
+        });
+        playSound(winSound);
     } else if (loseCount === 5) {
-        
-        alert('Game Over! You lost the game.');
         resetGame();
+        Swal.fire({
+            title: 'Game Over!',
+            text: 'You lost the game.',
+            icon: 'error',
+        })
+        playSound(loseSound);
     }
 }
 
@@ -51,4 +76,14 @@ function playerSelection(choice) {
     updateResult(result);
 
     checkForWinner();
+}
+
+function playSound(sound) {
+    if (sound && sound.readyState === 4) {
+        sound.currentTime = 0;
+        sound.play().then(() => {
+        }).catch((error) => {
+            console.error('Autoplay was prevented:', error);
+        });
+    }
 }
