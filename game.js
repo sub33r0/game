@@ -27,7 +27,9 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
 
-    if (
+    if (playerSelection === computerSelection) {
+        return 'tie';
+    } else if (
         (playerSelection === 'rock' && computerSelection === 'scissors') ||
         (playerSelection === 'paper' && computerSelection === 'rock') ||
         (playerSelection === 'scissors' && computerSelection === 'paper')
@@ -39,6 +41,7 @@ function playRound(playerSelection, computerSelection) {
         return 'lose';
     }
 }
+
 
 function updateResult(result) {
     const resultContainer = document.getElementById('result-container');
